@@ -5,7 +5,42 @@
 		<title>Title</title>
 		<base href="/">
 	</head>
-	<body ng-app="myApp">
+	<body>
+		<nav class="navbar navbar-expand-md navbar-dark bg-dark" role="navigation">
+			<a class="navbar-brand" href="/">Logo Here</a>
+			<button class="navbar-toggler" type="button" ng-click="isNavCollapsed = !isNavCollapsed" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+
+			<div class="collapse navbar-collapse" uib-collapse="isNavCollapsed">
+				<ul class="navbar-nav ml-auto">
+					<li class="nav-item">
+						<a class="nav-link" href="/">Home</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="/home/home2">Home2</a>
+					</li>
+					<li class="nav-item" uib-dropdown class="mb-2">
+			          <a class="nav-link" href id="simple-dropdown" uib-dropdown-toggle>
+			            Click
+			          </a>
+			          <ul class="dropdown-menu dropdown-menu-right" uib-dropdown-menu aria-labelledby="simple-dropdown">
+			            <li>
+			            	<a href ng-repeat="choice in items" class="dropdown-item">
+				              {{choice}}
+				            </a>
+			        	</li>
+			          </ul>
+			        </li>
+				</ul>
+			</div>
+		</nav>
+
 		<ng-view></ng-view>
+
+		<div class="jumbotron text-center" style="margin-bottom:0">
+		  <p>Footer</p>
+		</div>
+
 	</body>
 </html>

@@ -8,7 +8,7 @@ export default class HomeController{
 	}
 	
 	changeName(){
-		console.log(this.location.url('/home'));
+		this.location.url('/home/abcd');
 	}
 
 	myName(){
