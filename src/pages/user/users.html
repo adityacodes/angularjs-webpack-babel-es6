@@ -1,6 +1,6 @@
-<div class="container" style="margin-top:30px">
+<div class="container" style="margin-top:30px" ng-init="user.getUsers(1)">
   <h1 class="text-center">Users Data</h1>
-  <table class="table table-bordered mx-auto" ng-init="user.getUsers()">
+  <table class="table table-bordered mx-auto">
     <thead>
       <tr>
         <th>Firstname</th>
@@ -13,9 +13,12 @@
       <tr ng-repeat="user in users.data">
         <td>{{user.first_name}}</td>
         <td>{{user.last_name}}</td>
-        <td><img src="{{user.avatar}}" width="50" height="50"></td>
+        <td><img ng-src="{{user.avatar}}" width="50" height="50"></td>
         <td><a class="btn btn-light" ng-href="{{'/user/'+user.id}}">Show Details</a></td>
       </tr>
     </tbody>
   </table>
+  <div>
+    <ul class="justify-content-center" uib-pagination total-items="totalItems" ng-model="currentPage" ng-change="pageChanged()"></ul>
+  </div>
 </div>

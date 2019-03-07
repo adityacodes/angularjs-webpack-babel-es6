@@ -7,8 +7,8 @@ class Users {
     this.http = $http;
   }
 
-  getUsers() {
-	return this.http.get('https://reqres.in/api/users');
+  getUsers(page) {
+	return this.http.get('https://reqres.in/api/users?page='+page);
   }
 
   getUserById(id){

@@ -7,25 +7,28 @@ export default class UserController{
 		this.userService = userService;
 		this.routeParams = $routeParams;
 	}
-	
-	changeName(){
-		this.location.url('/user/abcd');
-	}
 
-	getUsers(){
-		this.userService.getUsers().then((result)=>{
-			this.scope.users = result.data;
+	getUsers(page){
+		let ctrl = this;
+		ctrl.userService.getUsers(page).then((result)=>{
+
+			ctrl.scope.totalItems = result.data.total;
+			ctrl.scope.currentPage = result.data.page;
+
+			ctrl.scope.pageChanged = function() {
+				ctrl.getUsers(ctrl.scope.currentPage)
+			};
+
+			ctrl.scope.users = result.data;
+		
 		});
 	}
 
 	showUser(){
-		this.userService.getUserById(this.routeParams.id).then((result)=>{
-			this.scope.single = result.data.data;
+		let ctrl = this;
+		ctrl.userService.getUserById(ctrl.routeParams.id).then((result)=>{
+			ctrl.scope.single = result.data.data;
 		});
-	}
-
-	myName(){
-		return this.routeParams.id;
 	}
 
 }
