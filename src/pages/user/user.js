@@ -12,11 +12,8 @@ export default class UserController{
 		let ctrl = this;
 		ctrl.userService.getUsers(page).then((result)=>{
 
-			ctrl.scope.totalItems = result.data.total;
-			ctrl.scope.currentPage = result.data.page;
-
 			ctrl.scope.pageChanged = function() {
-				ctrl.getUsers(ctrl.scope.currentPage)
+				ctrl.getUsers(ctrl.scope.users.page);
 			};
 
 			ctrl.scope.users = result.data;

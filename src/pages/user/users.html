@@ -19,6 +19,6 @@
     </tbody>
   </table>
   <div>
-    <ul class="justify-content-center" uib-pagination total-items="totalItems" ng-model="currentPage" ng-change="pageChanged()"></ul>
+    <ul class="justify-content-center" uib-pagination total-items="users.total" items-per-page="users.per_page" ng-model="users.page" ng-change="pageChanged()"></ul>
   </div>
 </div>
