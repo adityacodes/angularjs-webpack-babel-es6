@@ -6,7 +6,7 @@ import HomeController from './home';
 import userService from '../../services/user.service';
 import greet from '../../directives/greet.directive';
 
-import './home.css'
+import './home.css';
 
 export default angular.module('home', [ngRoute, userService, greet])
 					  .config(routes)

@@ -1,4 +1,4 @@
-export default class HomeController{
+export default class UserController{
 	
 	constructor($scope, $location, userService, $routeParams){
 		this.name = 'World';
@@ -9,7 +9,7 @@ export default class HomeController{
 	}
 	
 	changeName(){
-		this.location.url('/home/abcd');
+		this.location.url('/user/abcd');
 	}
 
 	getUsers(){
@@ -18,9 +18,15 @@ export default class HomeController{
 		});
 	}
 
+	showUser(){
+		this.userService.getUserById(this.routeParams.id).then((result)=>{
+			this.scope.single = result.data.data;
+		});
+	}
+
 	myName(){
 		return this.routeParams.id;
 	}
 
 }
-HomeController.$inject = ['$scope', '$location', 'userService', '$routeParams'];
+UserController.$inject = ['$scope', '$location', 'userService', '$routeParams'];

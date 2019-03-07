@@ -8,7 +8,11 @@ class Users {
   }
 
   getUsers() {
-    return this.http.get('https://reqres.in/api/users');
+	return this.http.get('https://reqres.in/api/users');
+  }
+
+  getUserById(id){
+  	return this.http.get('https://reqres.in/api/users/'+id);
   }
 
 }

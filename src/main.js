@@ -10,9 +10,10 @@ import './style.css';
 
 // Pages Modules Import
 import home from './pages/home';
+import user from './pages/user';
 
 
-angular.module(app.name, [ ngRoute, home, collapse, dropdown ])
+angular.module(app.name, [ ngRoute, home, user, collapse, dropdown ])
 		.config(['$routeProvider', '$locationProvider', 
 				($routeProvider, $locationProvider) => {
 					  $locationProvider.html5Mode(true);
