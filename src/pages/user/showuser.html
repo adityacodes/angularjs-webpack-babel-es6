@@ -1,0 +1,15 @@
+<div class="container" style="margin-top:30px">
+  <h1 class="text-center">User Data</h1>
+
+  <div class="card mx-auto" style="width:300px" ng-init="user.showUser()">
+    <img class="card-img-top" ng-if="single.avatar" ng-src="{{single.avatar}}" alt="Card image">
+    <div class="card-body">
+      <h4 class="card-title">{{single.first_name+' '+single.last_name}} </h4>
+      <p class="card-text">Some example text.</p>
+    </div>
+  </div>
+
+  <div style="margin-bottom:30px;">
+    	<a class="btn btn-warning" ng-href="{{'/users'}}">Back to Users</a>
+  </div>
+</div>

@@ -8,16 +8,13 @@ export default class UserController{
 		this.routeParams = $routeParams;
 	}
 
-	getUsers(page){
+	getUsers(page=1){
 		let ctrl = this;
 		ctrl.userService.getUsers(page).then((result)=>{
-
 			ctrl.scope.pageChanged = function() {
 				ctrl.getUsers(ctrl.scope.users.page);
 			};
-
 			ctrl.scope.users = result.data;
-		
 		});
 	}
 

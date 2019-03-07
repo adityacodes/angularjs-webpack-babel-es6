@@ -1,13 +1,16 @@
 routes.$inject = ['$routeProvider'];
 
 export default function routes($routeProvider) {
+  require("html-loader!./home.html");
+  require("html-loader!./show.html");
+
   $routeProvider
     .when('/', {
-		template: require('./home.html'),
+		templateUrl: 'views/home.html',
 		controller: 'HomeController',
 		controllerAs: 'home'
     }).when('/home/:id', {
-		template: require('./show.html'),
+		templateUrl: 'views/show.html',
 		controller: 'HomeController',
 		controllerAs: 'home'
     });

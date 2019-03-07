@@ -1,12 +1,10 @@
-import angular from 'angular';
-
 function greet() {
   return {
     restrict: 'E',
     scope: {
       name: '='
     },
-    template: 'Hello {{name}}</div>'
+    template: 'Hello {{name}}'
   }
 }
 

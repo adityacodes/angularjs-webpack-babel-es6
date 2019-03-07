@@ -1,6 +1,4 @@
-import angular from 'angular';
 import ngRoute from 'angular-route';
-
 import pagination from 'ui-bootstrap4/src/pagination';
 
 import routes from './user.routes';

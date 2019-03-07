@@ -1,11 +1,10 @@
-import angular from 'angular';
+// import angular from 'angular';
 import ngRoute from 'angular-route';
 import collapse from 'ui-bootstrap4/src/collapse';
 import dropdown from 'ui-bootstrap4/src/dropdown';
 import app from './app.config';
 
 // Global Styles Import
-import 'bootstrap/dist/css/bootstrap.min.css';
 import './style.css';
 
 // Pages Modules Import

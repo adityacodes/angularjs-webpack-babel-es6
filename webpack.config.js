@@ -2,10 +2,18 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 const webpack = require('webpack');
 
 module.exports = {
-  	entry: './src/main.js',
+  	entry: {
+  		angular: './node_modules/angular/angular',
+  		main: './src/main.js'
+  	},
+	output: {
+		path: path.resolve(__dirname, 'dist'),
+		filename: '[name].bundle.js'
+	},
   	devtool: 'inline-source-map',
   	devServer: {
 		contentBase: './dist',
@@ -17,30 +25,34 @@ module.exports = {
 		new HtmlWebpackPlugin({
 			title: 'Angular Application',
 			hash: true,
-		    template: './src/index.html'
+		    template: './src/index.html',
+		    minify: {
+		        collapseWhitespace: true,
+		        preserveLineBreaks: true,
+		        removeComments: true,
+		    }
 		}),
 	    new MiniCssExtractPlugin({
 	      filename: "[name].css",
-	      chunkFilename: "[id].css"
-	    })
+	      chunkFilename: "[id].css",
+          sourceMap: true
+	    }),
+	    new UglifyJSPlugin({
+        	sourceMap: true 
+    	})    
 	],
-	output: {
-		path: path.resolve(__dirname, 'dist'),
-		filename: '[name].bundle.js',
-		publicPath: '/'
-	},
 	module: {
 	 rules: [
 	   {
-        test: /\.js$/,
-        exclude: /node_modules/,
-        use: {
-          loader: "babel-loader"
-        }
-       },
+	        test: /\.js$/,
+	        exclude: /node_modules/,
+	        use: {
+	          loader: "babel-loader"
+	        }
+	   },
 	   {
 	     test: /\.css$/,
-	     use: [MiniCssExtractPlugin.loader, "css-loader"]
+	     use: [MiniCssExtractPlugin.loader,'css-loader']
 	   },
 	   {
 	     test: /\.(png|svg|jpg|gif)$/,
@@ -54,12 +66,11 @@ module.exports = {
 	       'file-loader'
 	     ]
 	   },
-	   {
-	   	test: /\.html$/,
-      	use:{
-      		loader: 'raw-loader'
-      	} 
-	   }
+		{
+		  test: /\.html$/,
+		  use: ['file-loader?name=views/[name].[ext]', 'extract-loader', 'html-loader'],
+			exclude: /\index.html$/
+		}
 	 ]
-	}
+	},
 };

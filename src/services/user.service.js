@@ -1,5 +1,3 @@
-import angular from 'angular';
-
 class Users {
 
   constructor($http) {
@@ -8,7 +6,7 @@ class Users {
   }
 
   getUsers(page) {
-	return this.http.get('https://reqres.in/api/users?page='+page);
+	 return this.http.get('https://reqres.in/api/users?page='+page);
   }
 
   getUserById(id){
