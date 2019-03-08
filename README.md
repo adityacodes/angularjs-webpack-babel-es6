@@ -10,7 +10,7 @@ $ git clone https://github.com/adityacodes/angularjs-webpack-babel-es6.git
 ## Project Dependencies
 - AngularJS - 1.x
 - AngularJS Router - 1.x
-- Bootstrap - 4.x
+- Bootstrap - 4.x (CSS Added from CDN)
 - UIBootstrap4 - 3.x 
 
 ## Developer Dependencies
@@ -39,3 +39,8 @@ This is a ready to go environment for production on any shared/VPS or any other 
 ```bash
 $ npm run build
 ```
+
+##Latest Build Status:
+<p align="center">
+	<img src="https://trainingmaterials.ml/archive/status.png">
+</p>
